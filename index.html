@@ -1,156 +1,205 @@
 <html>
+  <head>
+    <style>
+      .myHeading {
+        color: red;
+      }
+    </style>
+  </head>
 
-<head>
-  <style>
-    .myHeading {
-      color: red;
-    }
-  </style>
-</head>
-
-<body>
-  <div>
-    <h1>This is the title of the page</h1>
-    <h2>This is the subtitle of the page</h2>
-  </div>
-
-  <div>
-    <hr />
-
-    <ul id="firstList">
-      <li>1st</li>
-      <li>2nd</li>
-      <li>3rd</li>
-    </ul>
-
-    <ul id="secondList">
-      <li>1st</li>
-      <li>2nd</li>
-      <li>3rd</li>
-    </ul>
-
-    <a href="https://epicode.it">This link goes to Epicode</a>
-
+  <body>
     <div>
-      <p>This text is just for the exercise</p>
+      <h1 id="h1">This is the title of the page</h1>
+      <h2>This is the subtitle of the page</h2>
     </div>
 
     <div>
-      <input type="text" id="input-field" placeholder="input field for the exercise" />
+      <hr />
+
+      <ul id="firstList">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+      </ul>
+
+      <ul id="secondList">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+      </ul>
+
+      <a href="https://epicode.it">This link goes to Epicode</a>
+
+      <div>
+        <p>This text is just for the exercise</p>
+      </div>
+
+      <div>
+        <input
+          type="text"
+          id="input-field"
+          placeholder="input field for the exercise"
+        />
+      </div>
     </div>
-  </div>
 
-  <div>
-    <p>And this text is just for the exercise too!</p>
-    <h2 style="color: red">
-      Save this page on your computer and open it with VSCode to get the
-      questions!
-    </h2>
-  </div>
-  <script>
-    /* EXERCISE 1
-     Write a function for changing the title of the document in something else.
-    */
+    <div>
+      <p>And this text is just for the exercise too!</p>
+      <h2 style="color: red">
+        Save this page on your computer and open it with VSCode to get the
+        questions!
+      </h2>
+    </div>
+    <div>
+      <footer><p>footer</p></footer>
+    </div>
+    <script>
+      /* EXERCISE 1
+       Write a function for changing the title of the document in something else.
+      */
 
-    const changeTitle = function (newTitle) {
-      //
-    };
+      const changeTitle = function () {
+        document.getElementById("h1").innerHTML = "Something else";
+      };
+      changeTitle();
+      /* EXERCISE 2
+       Write a function for changing the class of the title of the page in "myHeading".
+      */
 
-    /* EXERCISE 2
-     Write a function for changing the class of the title of the page in "myHeading".
-    */
+      const addClassToTitle = function () {
+        document.getElementById("h1").classList.add("myHeading");
+      };
+      addClassToTitle();
 
-    const addClassToTitle = function () {
-      //
-    };
+      /* EXERCISE 3
+       Write a function for changing the text of only the p which are children of a div.
+      */
 
-    /* EXERCISE 3
-     Write a function for changing the text of only the p which are children of a div.
-    */
+      const changePcontent = function () {
+        //should write it with a for loop but it changes the title if i use even if i use id's
+        //for(let i = 0; i < divs.length; i++)
+        // divs[i].innerHTML = "random";
+        document.querySelector("div > p").innerText = "Random words";
+      };
+      changePcontent();
 
-    const changePcontent = function () {
-      //
-    };
+      /* EXERCISE 4
+       Write a function for changing the href property of every link to https://www.google.com
+      */
 
-    /* EXERCISE 4
-     Write a function for changing the href property of every link to https://www.google.com
-    */
+      const changeUrls = function () {
+        //
+        let newUrl = document.getElementsByTagName("a");
 
-    const changeUrls = function () {
-      //
-    };
+        for (i = 0; i < newUrl.length; i++) {
+          newUrl[i].href = "https://www.google.com";
+          newUrl[i].target = "_blank";
+          newUrl[i].innerText = "link changed";
+        }
+      };
+      changeUrls();
 
-    /* EXERCISE 5
-     Write a function for adding a new list item in the second unordered list.
-    */
+      /* EXERCISE 5
+       Write a function for adding a new list item in the second unordered list.
+      */
 
-    const addToTheSecond = function (content) {
-      //
-    };
+      const addToTheSecond = function (content5) {
+        let newLi = document.createElement("li");
+        newLi.innerText = content5;
+        let parentUl = document.querySelector("#secondList");
 
-    /* EXERCISE 6
-     Write a function for adding a second paragraph to the first div.
-    */
+        parentUl.appendChild(newLi);
+      };
+      addToTheSecond("random item");
 
-    const addParagraph = function (content) {
-      //
-    };
+      /* EXERCISE 6
+       Write a function for adding a second paragraph to the first div.
+      */
 
-    /* EXERCISE 7
-     Write a function for making the first unordered list disappear.
-    */
+      const addParagraph = function (content6) {
+        let newP = document.createElement("p");
+        newP.innerText = content6;
 
-    const firstUlDisappear = function () {
-      //
-    };
+        let parentDiv = document.querySelector("div p");
+        parentDiv.appendChild(newP);
+      };
+      addParagraph(
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+      );
 
-    /* EXERCISE 8
-     Write a function for making the background of every unordered list green.
-    */
+      /* EXERCISE 7
+       Write a function for making the first unordered list disappear.
+      */
 
-    const paintItGreen = function () {
-      //
-    };
+      const firstUlDisappear = function () {
+        document.querySelector("#firstlist").remove();
+      };
+      firstUlDisappear();
 
-    /* EXERCISE 9
-     Make the heading of the page change color every time the user clicks on it.
-    */
+      /* EXERCISE 8
+       Write a function for making the background of every unordered list green.
+      */
 
-    const makeItClickable = function () {
-      //
-    };
+      const paintItGreen = function () {
+        let newBg = document.getElementsByTagName("ul");
 
-    /* EXERCISE 10
-     Change the footer text with something else when the user clicks on it.
-    */
+        for (i = 0; i < newBg.length; i++) {
+          newBg[i].style.backgroundColor = "10b191";
+        }
+      };
+      paintItGreen();
 
-    const changeFooterText = function () {
-      //
-    };
+      /* EXERCISE 9
+       Make the heading of the page change color every time the user clicks on it.
+      */
 
-    /* EXERCISE 11
-     Attach an event listener to the input field in the page that changes the text of the page's subtitle
-    */
+      //const makeItClickable = function () {
+      ////let randomColor =
+      // "#" +
+      ////changeColor.addEventListener("click", randomColor);
+      //makeItClickable();
 
-    const inputField = document.getElementById("input-field");
-    // ...
+      const makeItClickable = function () {
+        const colorado = document.getElementById("h1");
+        Math.floor(Math.random() * 255);
+        let red = Math.floor(Math.random() * 255);
+        let green = Math.floor(Math.random() * 255);
+        let blue = Math.floor(Math.random() * 255);
+        let rgb = "rgb(" + red + "," + green + "," + blue + ")";
+        colorado.style.color = rgb;
+      };
 
-    /* EXERCISE 11
-     Attach an event listener to the input field in the page that changes the text of the page's subtitle
-    */
+      /* EXERCISE 10
+       Change the footer text with something else when the user clicks on it.
+      */
 
-    window.onload = function () {
-      //
-    };
+      const changeFooterText = function () {
+        let newPf = document.querySelector("footer p");
+        newPf.innerText = "Random text";
+        document.querySelector("footer p").addEventListener("click", newPf);
+      };
+      changeFooterText();
 
-    /* EXERCISE 13
-     Use HTML5 tags to properly provide semantic meaning to the different portions of the page.
-    */
+      /* EXERCISE 11
+       Attach an event listener to the input field in the page that changes the text of the page's subtitle
+      */
 
-    /* ### EXTRA ###  EXERCISE 14
-     Create an input of type "color" and use it to change the color of the subtitle
-    */
-  </script>
-</body>
+      const inputField = document.getElementById("input-field");
+      // ...
 
+      /* EXERCISE 12
+       Attach an event listener to the input field in the page that changes the text of the page's subtitle
+      */
+
+      window.onload = function () {};
+
+      /* EXERCISE 13
+       Use HTML5 tags to properly provide semantic meaning to the different portions of the page.
+      */
+
+      /* ### EXTRA ###  EXERCISE 14
+       Create an input of type "color" and use it to change the color of the subtitle
+      */
+    </script>
+  </body>
 </html>
